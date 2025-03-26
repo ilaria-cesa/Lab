@@ -12,7 +12,8 @@ sys.path.append(os.path.abspath('..'))  # Adds the parent directory to sys.path
 
 import logging
 # Set up logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+#è commentato perche deve essere scritto solo una volta
+#logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
 def load_data():
@@ -41,7 +42,7 @@ def train_model(grid_search=False):
         X, y, df_indices, test_size=0.2, random_state=42
     )
 
-    if grid_search:
+    if grid_search: #if gris_search == True, è un argomento della funzione di default False
         rf = RandomForestClassifier(random_state=42)
         param_grid = {
             'n_estimators': [50, 100, 200],

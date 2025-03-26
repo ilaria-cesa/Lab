@@ -8,7 +8,7 @@ from src import config
 
 import logging
 # Set up logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+#logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def load_data():
     logging.info('Opening Excel Files...')
@@ -33,6 +33,7 @@ def load_data():
     conn = sqlite3.connect(config.DATABASE_PATH)
 
     # Write the DataFrame to a table (replace 'my_table' with your desired table name)
+    # scrivi la tabella su SQL
     df.to_sql(config.RAW_TABLE, conn, if_exists='replace', index=False)
 
     # Commit and close the connection

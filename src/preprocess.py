@@ -14,13 +14,15 @@ import sqlite3
 sys.path.append(os.path.abspath('..'))  # Adds the parent directory to sys.path
 from src import config
 
+
+#NON ESISTE UN PREPROCSS STANDARD dipende dai dati!!!!!!
 def preprocess_data():
 
 
     # Download necessary resources
     nltk.download('punkt')
     nltk.download('punkt_tab')
-    nltk.download('stopwords')
+    nltk.download('stopwords') #### CONTROLLA QUALI CI SONO SCRITTE tipo not e but
     nltk.download('wordnet')
 
     # Initialize lemmatizer and stopwords
@@ -56,7 +58,8 @@ def preprocess_data():
         # Remove stopwords
         words = [word for word in words if word not in stop_words]
 
-        # Lemmatize words
+        # Lemmatize words 
+        # Semplifica la parola riportandola alla forma base il nome tipo running diventa run
         words = [lemmatizer.lemmatize(word) for word in words]
 
         # Reconstruct cleaned text
@@ -72,7 +75,7 @@ def preprocess_data():
 
     # Apply preprocessing
     df['cleaned_text'] = df['text'].apply(preprocess_tweet)
-    df['sentiment'] = df['sentiment'].apply(lambda x : x.lower())
+    df['sentiment'] = df['sentiment'].apply(lambda x : x.lower()) #da alcune parti c'è scritto Positive e positive
     df.to_sql(config.PROCESSED_TABLE, conn, if_exists='replace', index=False)
 
     # Commit and close the connection
