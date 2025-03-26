@@ -76,6 +76,7 @@ def preprocess_data():
     # Apply preprocessing
     df['cleaned_text'] = df['text'].apply(preprocess_tweet)
     df['sentiment'] = df['sentiment'].apply(lambda x : x.lower()) #da alcune parti c'è scritto Positive e positive
+    df.drop_duplicates(inplace=True)
     df.to_sql(config.PROCESSED_TABLE, conn, if_exists='replace', index=False)
 
     # Commit and close the connection
