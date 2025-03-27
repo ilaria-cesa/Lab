@@ -9,6 +9,9 @@ RAW_DATA_PATH = os.path.join(BASE_DIR, "../data/raw/")
 # SQLite Database Path
 DATABASE_PATH = os.path.join(BASE_DIR, "../database/sentiment.db")
 
+#SAVE THE MODEL
+MODELS_PATH = "../models/"
+
 # Preprocessed Data Table Name
 PROCESSED_TABLE = "processed_tweets"
 
@@ -23,4 +26,5 @@ EVALUATION_TABLE = "grid_search_results"
 
 # Logging Configuration
 LOGGING_LEVEL = "INFO"
+
 
