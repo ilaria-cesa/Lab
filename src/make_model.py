@@ -27,7 +27,7 @@ def load_data():
 
 def train_model(grid_search=False):
     """Trains a Random Forest model with GridSearchCV and saves evaluation metrics to CSV."""
-    df = load_data()
+    df = load_data().head(100) #oppure sample 
 
     # Save original indices before vectorization
     df_indices = df.index
