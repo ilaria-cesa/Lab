@@ -38,7 +38,7 @@ def train_model(grid_search=False):
     X = vectorizer.fit_transform(df['cleaned_text'])
     y = df['sentiment']
 
-    logging.info("saving model...")
+    logging.info("saving vectorizer...")
     with open(f"{config.MODELS_PATH}vectorizer.pickle", "wb") as f: #write binary perchè il vectorizer è di tipo binary lo uso come binary
         pickle.dump(vectorizer, f)
         #per applicare il modello dovrò dare una frase in input preprocessarla poi vectorize 
